@@ -42,6 +42,9 @@ public class ManageVendorCompany {
     public WebElement searchButton;
     @FindBy(xpath = "//tbody/tr[2]/td[5]/a[contains(.,'Edit')]")
     public WebElement editLink;
+    @FindBy(xpath = "//button[@id='edit-delete']")
+    public WebElement delete;
+
 
     public void edit(){
         navigateToVendorCompany();
@@ -57,8 +60,11 @@ public class ManageVendorCompany {
         contactNumber.sendKeys("5151232323");
         email.clear();
         email.sendKeys("testmygate@gmail.com");
+        address.clear();
+        address.sendKeys("test mygate");
+        doSelect(cityName,"731");
+        saveButton.click();
     }
-
     public ManageVendorCompany(WebDriver driver) {
         this.driver=driver;
         PageFactory.initElements(driver, this);
@@ -85,5 +91,14 @@ public class ManageVendorCompany {
                 "Status message\n" +
                 "Company already exists!",successMSg.getText());
     }
+    public void deleteVendorCompanyComapny(){
+        doSelect(selectSociety,"28");
+        name.sendKeys("test Automation");
+        searchButton.click();
+        editLink.click();
+        doSelect(societyDropDown,"28");
+        delete.click();
+    }
+
 
 }
