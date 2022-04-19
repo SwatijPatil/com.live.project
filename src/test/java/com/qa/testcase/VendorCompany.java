@@ -24,6 +24,18 @@ public class VendorCompany extends Testbase {
     public void editCompanyDetails(){
         ManageVendorCompany mnc=new ManageVendorCompany(driver);
         mnc.edit();
+    }
+    @Test(priority = 3)
+    public void deleteTheVendorCompany(){
+        ManageVendorCompany mnc =new ManageVendorCompany(driver);
+        mnc.navigateToVendorCompany();
+        mnc.deleteVendorCompanyComapny();
+    }
+    @Test(priority = 4)
+            public void searchVendorCompany() {
+        ManageVendorCompany mnc = new ManageVendorCompany(driver);
+        mnc.searchFilter();
 
     }
+
 }

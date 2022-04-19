@@ -42,9 +42,15 @@ public class ManageVendorCompany {
     public WebElement searchButton;
     @FindBy(xpath = "//tbody/tr[2]/td[5]/a[contains(.,'Edit')]")
     public WebElement editLink;
+    @FindBy(xpath = "//tbody/tr[1]/td[5]/a[contains(.,'Edit')]" +
+            "")
+    public WebElement automationEditLink;
     @FindBy(xpath = "//button[@id='edit-delete']")
     public WebElement delete;
-
+    @FindBy(xpath="//button[contains(.,'Reset Search')]")
+    public  WebElement resetSearch;
+    @FindBy(xpath = "//select[@id='edit-type']")
+public WebElement selectTpe;
 
     public void edit(){
         navigateToVendorCompany();
@@ -64,6 +70,8 @@ public class ManageVendorCompany {
         address.sendKeys("test mygate");
         doSelect(cityName,"731");
         saveButton.click();
+
+
     }
     public ManageVendorCompany(WebDriver driver) {
         this.driver=driver;
@@ -93,12 +101,25 @@ public class ManageVendorCompany {
     }
     public void deleteVendorCompanyComapny(){
         doSelect(selectSociety,"28");
-        name.sendKeys("test Automation");
+        name.sendKeys("test");
         searchButton.click();
-        editLink.click();
+        automationEditLink.click();
         doSelect(societyDropDown,"28");
         delete.click();
     }
+    public void searchFilter(){
+        doSelect(selectSociety,"28");
+        searchButton.click();
+        resetSearch.click();
+        doSelect(selectSociety,"28");
+        name.sendKeys("mygate");
+        searchButton.click();
+        resetSearch.click();
+        doSelect(selectSociety,"28");
+        selectTpe.sendKeys("F");
+        searchButton.click();
+    }
+
 
 
 }

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite"><test verbose="2" preserve-order="true" name="C:/Users/Swati/com.live.project">
+    <classes>
+        <class name="com.qa.testcase.AmenityModule">
+            <methods><include name="createNewAmenity"/>
+                <include name="bookPaidAmenity"/>
+            </methods>
+        </class>
+        <class name="com.qa.testcase.Communication">
+            <methods>
+                <include name="erpDashboard"/>
+                <include name="createDocument"/>
+                <include name="editAndDeleteDocument"/>
+            </methods>
+        </class>
+        <class name="com.qa.testcase.Discussion">
+            <methods>
+                <include name="addNewDiscussion"/>
+                <include name="closeDiscussionTopic"/>
+                <include name="addCommentInTheDiscussion"/>
+                <include name="deleteTheDiscussion"/>
+                <include name="searchDiscussion"/>
+            </methods>
+        </class>
+        <class name="com.qa.testcase.Flat"><methods>
+
+            <include name="newLogin"/>
+            <include name="activeFlat"/>
+        </methods></class><class name="com.qa.testcase.Meeting"><methods><include name="createMeeting"/><include name="editThemeeting"/></methods></class><class name="com.qa.testcase.Mimo"><methods><include name="editTheMIRequest"/><include name="rejectTheMIRequest"/><include name="filter"/></methods></class><class name="com.qa.testcase.SignInPageTest">
+    <methods><include name="signinToRSA"/><include name="validateLOgo"/><include name="validateHomePageTitle"/><include name="createmeeting"/><include name="addNewServiceProvider"/><include name="AddtheServiceproviderToFlat"/></methods></class><class name="com.qa.testcase.VendorCompany"><methods><include name="navigateToVendorComapnyPage"/><include name="editCompanyDetails"/></methods></class></classes></test></suite>
