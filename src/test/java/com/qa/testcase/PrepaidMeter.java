@@ -2,12 +2,18 @@ package com.qa.testcase;
 
 import com.qa.base.Testbase;
 import com.qa.pages.ERPmodule;
-import com.qa.pages.PollElectionPage;
+import com.qa.pages.PrepaidMeterPage;
 import com.qa.pages.Signin;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-public class ElectionPoll extends Testbase {
+public class PrepaidMeter extends Testbase {
+   public Signin sn;
+   public ERPmodule erp;
+   public PrepaidMeterPage pm;
+
     @BeforeTest
     public void setup(){
         intialisation();
@@ -17,13 +23,10 @@ public class ElectionPoll extends Testbase {
         erp.doNavigationToErpDashboard();
     }
     @Test
-    public void navigateToERPDashboard() throws InterruptedException {
-        PollElectionPage election=new PollElectionPage(driver);
-        election.doNavigateToelectionPollModule();
-        election.createElectionPoll();
-        Thread.sleep(2000);
-        election.deletePoll();
-        //election.editPoll();
+    public void addNewmeterChangesFormeter(){
+        PrepaidMeterPage pm=new PrepaidMeterPage(driver);
+        pm.doNavigate();
+        pm.addNewCharges();
     }
 
 }

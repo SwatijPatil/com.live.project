@@ -1,6 +1,7 @@
 package com.qa.pages;
 
 import com.qa.base.Testbase;
+import com.sun.javafx.image.ByteToIntPixelConverter;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -47,22 +48,45 @@ public class PollElectionPage extends Testbase {
     public WebElement nominee2;
     @FindBy(xpath = "//button[contains(.,'Save as Draft')]")
     public WebElement saveASDraft;
+    //___________________EDIT ______________________________
+    @FindBy(xpath="(//button[@id='edit-poll'])[1]")
+    public WebElement editPollButton;
+    @FindBy(id = "later-radio")
+    public WebElement laterRadioButton;
+    @FindBy(id="startDate")
+    public WebElement sratDate;
+    @FindBy(xpath = "(//table[@class=' table-condensed'])[9]")
+    public WebElement startDateCalender;
+    @FindBy(xpath = "(//th[contains(.,'April 2022')])[9]")
+    public WebElement monthyr;
+    @FindBy(xpath = "//button[contains(.,'Save & Publish')]")
+    public WebElement saveAndPublish;
+    @FindBy(xpath="//select[@name='start_time']")
+    public WebElement startTime;
 
-    public void  doSelectDRopDown(WebElement ele, String value){
+
+    public void doSelectStartDate(){
+        while (!(monthyr.getText().split(" ")[0].equalsIgnoreCase("May")
+        && monthyr.getText().split(" ")[1].equalsIgnoreCase("2022"))){
+            driver.findElement(By.xpath("(//th[@class='next'])[13]")).click();
+        }
+driver.findElement(By.xpath("//body[1]/div[2]/div[3]/table[1]/tbody[1]/tr[3]/td[3]")).click();
+    }
+
+
+    public void  doSelectDRopDown(WebElement ele, int index){
          Select s=new Select(ele);
-         s.selectByValue(value);
+         s.selectByIndex(index);
      }
-
-    public void doSelectDate() throws InterruptedException {
+     public void doSelectDate() throws InterruptedException {
         dateMonthYear.click();
         System.out.println(monthYear.getText());
         while(!(monthYear.getText().split(" ")[0].equalsIgnoreCase("April")
                 && monthYear.getText().split(" ")[1].equalsIgnoreCase("2022"))){
             Thread.sleep(8000);
-            driver.findElement(By.xpath("//th[@class='next']/span[@class='glyphicon glyphicon-arrow-right']")).click();
-            break;
+
         }
-        driver.findElement(By.xpath("(//td[@class='day today active'])[2]")).click();
+        driver.findElement(By.xpath("//body[1]/div[3]/div[3]/table[1]/tbody[1]/tr[6]/td[3]")).click();
     }
     public PollElectionPage(WebDriver driver) {
         this.driver=driver;
@@ -80,8 +104,8 @@ public class PollElectionPage extends Testbase {
         expireDateCal.click();
         dateMonthYear.click();
         doSelectDate();
-       driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        doSelectDRopDown(timedropdown, "21:00");
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        doSelectDRopDown(timedropdown, 22);
         participants.click();
         for (WebElement group : groups) {
             System.out.println(group.getText());
@@ -93,6 +117,42 @@ public class PollElectionPage extends Testbase {
         nominee1.sendKeys("one");
         nominee2.sendKeys("two");
         saveASDraft.click();
+
+
+
+    }
+    @FindBy(xpath = "(//button[contains(.,'Delete')])[2]")
+    public WebElement deleteButton;
+    @FindBy(xpath = "//button[@id='confirm-modal-delete']")
+    public WebElement confirmDelete;
+
+    public void editPoll() throws InterruptedException {
+     WebDriverWait wait=new WebDriverWait(driver, 50);
+     wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("(//button[@id='edit-poll'])[1]"))).click();
+       // editPollButton.click();
+        subjectTextField.click();
+        subjectTextField.sendKeys("add new subject");
+        descriptionField.clear();
+        descriptionField.sendKeys("ELECTION POLL");
+        laterRadioButton.click();
+        sratDate.click();
+        startDateCalender.click();
+        doSelectStartDate();
+        doSelectDRopDown(startTime,22);
+        expireDateCal.click();
+        dateMonthYear.click();
+        doSelectDate();
+        doSelectDRopDown(timedropdown, 24);
+        saveAndPublish.click();
+    }
+    public void deletePoll() throws InterruptedException {
+        WebDriverWait wait=new WebDriverWait(driver, 60);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[contains(.,'Delete')])[2]"))).click();
+        //Thread.sleep(10000);
+       // deleteButton.click();
+        confirmDelete.click();
+
+
     }
 
 }
