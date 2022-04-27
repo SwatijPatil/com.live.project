@@ -16,14 +16,20 @@ public class ElectionPoll extends Testbase {
         ERPmodule erp=new ERPmodule(driver);
         erp.doNavigationToErpDashboard();
     }
-    @Test
+    @Test(priority = 1)
     public void navigateToERPDashboard() throws InterruptedException {
         PollElectionPage election=new PollElectionPage(driver);
         election.doNavigateToelectionPollModule();
-        election.createElectionPoll();
+        //election.createElectionPoll();
         Thread.sleep(2000);
-        election.deletePoll();
         //election.editPoll();
+        //election.deletePoll();
+    }
+    @Test(priority = 2)
+    public void statusSearch() throws InterruptedException {
+        PollElectionPage election=new PollElectionPage(driver);
+        election.searchFilter();
+
     }
 
 }

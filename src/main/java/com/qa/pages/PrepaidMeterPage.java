@@ -56,14 +56,13 @@ public class PrepaidMeterPage extends Testbase {
      account.click();
      utilityMeter.click();
  }
- public void addNewCharges(){
+ public void addNewCharges() {
      addNewMeterCharges.click();
      doSelectDropDown(meterName, "24");
      ECCharges.sendKeys("1.56");
      DcCharges.sendKeys("2.5");
      doSelectDate();
-
-    }
+ }
 
 
 }

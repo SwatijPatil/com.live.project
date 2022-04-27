@@ -1,12 +1,13 @@
 package com.qa.testcase;
 
+import com.qa.base.Baseclass;
 import com.qa.base.Testbase;
 import com.qa.pages.ResidentListPage;
 import com.qa.pages.Signin;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-public class Resident extends Testbase {
+public class Resident extends Baseclass {
     public Signin sn;
     @BeforeTest
     public void setup(){

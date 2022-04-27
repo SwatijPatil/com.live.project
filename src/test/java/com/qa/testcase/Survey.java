@@ -20,13 +20,13 @@ public class Survey extends Testbase {
     public void createSurveyPoll() throws InterruptedException {
         SurveyPage sp=new SurveyPage(driver);
         sp.doNvaigateToSurvey();
-        //sp.createNewSurvey();
+        sp.createNewSurvey();
         sp.createSurveyPoll();
     }
     @Test(priority = 2)
     public void searchSurvey(){
         SurveyPage sp=new SurveyPage(driver);
-        //sp.search();
+        sp.search();
 
     }
 }

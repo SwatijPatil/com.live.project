@@ -16,14 +16,14 @@ public class Meeting extends Testbase {
     public void setup(){
         intialisation();
         Signin sn=new Signin(driver);
-        sn.login("siddup7878@gmail.com","mygate1234");
+        sn.login("siddup7878@gmail.com","123456");
         ERPmodule erp=new ERPmodule(driver);
         erp.doNavigationToErpDashboard();}
     @Test
     public void createMeeting(){
         MeetingHomePage mp=new MeetingHomePage(driver);
         mp.donavigationTomeetingModule();
-        //mp.addMeeting();
+        mp.addMeeting();
     }
     @Test
     public void editThemeeting(){

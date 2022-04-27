@@ -94,11 +94,9 @@ public class ResidentListPage extends Testbase {
     }
     public void search() throws InterruptedException {
         Thread.sleep(10000);
-       doSelect(societyList,"748");
+       doSelect(societyList,"28");
        searchButton.click();
-       //doSelect(selectStatus,"O");
     }
-
 }
 
 
